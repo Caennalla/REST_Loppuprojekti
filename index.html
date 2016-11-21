@@ -1,0 +1,53 @@
+<html ng-app="gadgetApp">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		<script src='/scripts/node_modules/angular/angular.js'></script>
+		<script src='/scripts/node_modules/jquery/dist/jquery.js'></script>
+		<script src='/scripts/node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+		<script src='/scripts/node_modules/scripts/app.js'></script>
+	</head>
+
+	<body ng-controller="gadgetListController">
+		<div class="panel panel-default">
+	    	<div class="panel-heading">
+            	<h1>Gadget list</span></h1>
+        	</div>
+	        <div class="panel-body">
+	        	<table class="table">
+	        		<tr>
+	        			<th>Name</th>
+	        			<th>Description</th>
+	        			<th>Latidute</th>
+	        			<th>Longidute</th>
+	        		</tr>
+			        <tr ng-repeat="gadget in gadgets">
+				        <th>{{gadget.Name}}</th>
+				        <th>{{gadget.Description}}</th>
+				        <th>{{gadget.Latidute}}</th>
+				        <th>{{gadget.Longidute}}</th>
+				        <th><button ng-Click=openEdit(gadget.ID)>Edit</button></th>
+				        <th><button ng-Click=delete(gadget.ID)>Delete</button></th>
+				    </tr>
+	        	</table>
+			</div>
+			<div class="panel-body">
+				<form ng-submit="addNew()">
+					Name:<br>
+					<input type="text" name="firstname" value='{{editscope.name}}' ng-model="editscope.name"><br>
+					Description:<br>
+					<input type="text" name="description" value='{{editscope.description}}' ng-model="editscope.description"><br>
+					Latidute:<br>
+					<input type="text" name="latidute" value='{{editscope.latidute}}' ng-model="editscope.latidute"><br>
+					Longidute:<br>
+					<input type="text" name="longidute" value='{{editscope.longidute}}' ng-model="editscope.longidute"><br>
+					<input type="hidden" name="id" value='{{editscope.id}}' ng-model="editscope.id">
+					<input type="submit" id="submit" value="Add new">
+				</form>
+				<form ng-submit="doEdit()">
+					<input type="submit" id="submit" value="Edit">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
